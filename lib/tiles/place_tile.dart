@@ -61,8 +61,10 @@ class PlaceTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              FlatButton(
+              TextButton(
+
                 child: Text(
+
                   'Ver no Mapa',
                   style: TextStyle(
                     fontFamily: 'Merriweather',
@@ -70,16 +72,23 @@ class PlaceTile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.amber,
                   ),
+
                 ),
-                textColor: Colors.amber,
-                padding: EdgeInsets.zero,
+//
+
+
+
+
+
+
                 onPressed: () {
                   launch(
                     'https://www.google.com/maps/search/?api=1&query=${snapshot.data['lat']},'
                     '${snapshot.data['long']}');
                 },
               ),
-              FlatButton(
+              TextButton(
+
                 child: Text(
                   'Ligar',
                   style: TextStyle(
@@ -89,7 +98,6 @@ class PlaceTile extends StatelessWidget {
                     color: Colors.amber,
                   ),
                 ),
-                padding: EdgeInsets.zero,
                 onPressed: () {
                   launch('tel: ${snapshot.data['phone']}');
                 },

@@ -124,8 +124,15 @@ class CartPrice extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 12,),
-                RaisedButton(
-                  color: Colors.amber,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.amber,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+
                   child: Text(
                     'COMPRAR',
                     style: TextStyle(

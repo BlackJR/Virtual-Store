@@ -49,21 +49,27 @@ class OrdersTab extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 16),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
+
                 'Entrar',
                 style: TextStyle(fontSize: 18),
               ),
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
-                  ),
-                );
-              },
-            )
+
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                textStyle: TextStyle(
+                  color: Colors.white,
+                ),
+
+            ),onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => LoginScreen(),
+                ),
+              );
+            },
+            ),
           ],
         ),
       );

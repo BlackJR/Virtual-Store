@@ -72,8 +72,11 @@ class CartTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  FlatButton(
-                    padding: EdgeInsets.all(0),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.amber,
+                      padding: EdgeInsets.all(0),
+                    ),
                     child: Text(
                       'Remover',
                       style: TextStyle(

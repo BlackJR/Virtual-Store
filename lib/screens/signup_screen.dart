@@ -100,7 +100,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 16),
                 SizedBox(
                   height: 50,
-                  child: RaisedButton(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
                     child: Text(
                       'CRIAR CONTA',
                       style: TextStyle(
@@ -109,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    color: Colors.amber,
+
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         var userData = <String, dynamic>{
@@ -136,7 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onSuccess() {
-    _scaffoldKey.currentState.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           'Você criou sua conta com sucesso!',
@@ -152,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onFail() {
-    _scaffoldKey.currentState.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           'Falha ao criar usuário',

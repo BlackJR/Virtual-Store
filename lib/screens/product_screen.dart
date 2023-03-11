@@ -123,8 +123,12 @@ class _ProductScreenState extends State<ProductScreen> {
                 SizedBox(height: 16),
                 SizedBox(
                   height: 50,
-                  child: RaisedButton(
-                    color: Colors.amber,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.amber,
+                      onPrimary: Colors.white,
+                    ),
+
                     onPressed: size != null
                         ? () {
                             if (UserModel.of(context).isLoggedIn) {

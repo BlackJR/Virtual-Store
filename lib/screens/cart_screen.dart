@@ -78,8 +78,11 @@ class CartScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
-                  RaisedButton(
-                    color: Colors.amber,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.amber,
+                    ),
+
                     child: Text(
                       'ENTRAR',
                       style: TextStyle(

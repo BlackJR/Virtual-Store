@@ -32,22 +32,22 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         actions: <Widget>[
-          FlatButton(
-            child: Text(
-              'CRIAR CONTA',
-              style: TextStyle(
-                fontFamily: 'Merriweather',
-                fontSize: 18,
-              ),
-            ),
-            textColor: Colors.white,
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => SignUpScreen(),
+          ButtonTheme(
+            child: TextButton(
+              child: Text(
+                'CRIAR CONTA',
+                style: TextStyle(
+                  fontFamily: 'Merriweather',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-              );
-            },
+              ),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignUpScreen()));
+              },
+            ),
           )
         ],
       ),
@@ -88,11 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     }),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: FlatButton(
-                    padding: EdgeInsets.zero,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.amber, backgroundColor: Colors.white,
+                      elevation: 0,),
                     onPressed: () {
                       if (_emailController.text.isEmpty) {
-                        _scaffoldKey.currentState.showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
                               'Insira seu e-mail para recuperar sua senha.',
@@ -100,11 +102,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             backgroundColor: Colors.redAccent,
                             duration: Duration(seconds: 3),
-                          ),
+                          )
                         );
                       } else {
                         model.recoverPass(_emailController.text);
-                        _scaffoldKey.currentState.showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
                               'Confira seu email',
@@ -129,25 +131,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(
                   height: 50,
-                  child: RaisedButton(
+                  child:
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white, backgroundColor: Colors.amber,
+                      elevation: 0,),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        model.signIn(
+                          email: _emailController.text,
+                          pass: _passController.text,
+                          onSuccess: _onSuccess,
+                          onFail: _onFail,
+                        );
+                      }
+                    },
                     child: Text(
-                      'ENTRAR',
+                      'Entrar',
                       style: TextStyle(
+                        fontFamily: 'Merriweather',
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    color: Colors.amber,
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {}
-                      model.signIn(
-                        email: _emailController.text,
-                        pass: _passController.text,
-                        onSuccess: _onSuccess,
-                        onFail: _onFail,
-                      );
-                    },
                   ),
                 ),
               ],
@@ -163,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onFail() {
-    _scaffoldKey.currentState.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           'Falha ao entrar, veja se seu email e senha estão corretas.',
